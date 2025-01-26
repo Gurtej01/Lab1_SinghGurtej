@@ -22,20 +22,20 @@ public class Seek : MonoBehaviour
 
     void Update()
     {
-        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouse.z = 0.0f;
-        Vector3 mouseDirection = (mouse - transform.position).normalized;
-        float mouseAngle = Vector3.SignedAngle(Vector3.right, mouseDirection, Vector3.forward);
+        // Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // mouse.z = 0.0f;
+        // Vector3 mouseDirection = (mouse - transform.position).normalized;
+        // float mouseAngle = Vector3.SignedAngle(Vector3.right, mouseDirection, Vector3.forward);
 
         // Rotate at 720 degrees per second
-        float turnSpeed = 720.0f * Time.deltaTime;
+        // float turnSpeed = 720.0f * Time.deltaTime;
 
         // Apply rotation from current (rb rotation) to desired (mouse angle) at a maximum rate of angular velocity (turn speed)
-        rb.MoveRotation(Mathf.MoveTowardsAngle(rb.rotation, mouseAngle, turnSpeed));
+        // rb.MoveRotation(Mathf.MoveTowardsAngle(rb.rotation, mouseAngle, turnSpeed));
 
         // Draw a line in the direction the seeker (rb) is facing, as a result of rb.MoveRotation from rb.rotation to the mouse cursor
-        Vector3 direction = Quaternion.Euler(0.0f, 0.0f, rb.rotation) * Vector3.right;
-        Debug.DrawLine(transform.position, transform.position + direction * 5.0f);
+        // Vector3 direction = Quaternion.Euler(0.0f, 0.0f, rb.rotation) * Vector3.right;
+        // Debug.DrawLine(transform.position, transform.position + direction * 5.0f);
 
         // Instantaneously snaps the rotation to the input angle
         //rb.MoveRotation(angle);
@@ -43,7 +43,7 @@ public class Seek : MonoBehaviour
         //Vector2 seekForce = CurveSeek();
         //rb.AddForce(seekForce);
 
-        Vector2 seekForce = Steering.Seek(rb, target.transform.position, moveSpeed, turnSpeed);
+        Vector2 seekForce = Steering.Seek(rb, target.transform.position, moveSpeed, 750.0f * Time.deltaTime);
         rb.AddForce(seekForce);
     }
 }

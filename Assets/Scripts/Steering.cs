@@ -8,6 +8,9 @@ public static class Steering
         Vector2 currentVelocity = seeker.linearVelocity;
         Vector2 desiredVelocity = ( target - seeker.transform.position).normalized * moveSpeed;
         Vector2 seekForce = desiredVelocity - currentVelocity;
+
+        float targetAngle = Vector3.SignedAngle(Vector3.right, desiredVelocity, Vector3.forward);
+        seeker.MoveRotation(Mathf.MoveTowardsAngle(seeker.rotation, targetAngle, turnSpeed));
         return seekForce;
         // 2% -- Output seeking force (smooth acceleration leading to curved motion)
         // 2% -- Use seeker.MoveRotation to rotate the seeker towards its velocity
