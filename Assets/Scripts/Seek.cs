@@ -34,8 +34,8 @@ public class Seek : MonoBehaviour
         // rb.MoveRotation(Mathf.MoveTowardsAngle(rb.rotation, mouseAngle, turnSpeed));
 
         // Draw a line in the direction the seeker (rb) is facing, as a result of rb.MoveRotation from rb.rotation to the mouse cursor
-        // Vector3 direction = Quaternion.Euler(0.0f, 0.0f, rb.rotation) * Vector3.right;
-        // Debug.DrawLine(transform.position, transform.position + direction * 5.0f);
+         Vector3 direction = Quaternion.Euler(0.0f, 0.0f, rb.rotation) * Vector3.right;
+         Debug.DrawLine(transform.position, transform.position + direction * 5.0f);
 
         // Instantaneously snaps the rotation to the input angle
         //rb.MoveRotation(angle);
