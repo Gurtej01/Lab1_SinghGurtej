@@ -1,8 +1,6 @@
 using UnityEngine;
-
 public static class Steering
 {
-    // "Seek is a static method that can be applied to any GameObject" -- Done for you here
     public static Vector2 Seek(Rigidbody2D seeker, Vector3 target, float moveSpeed, float turnSpeed)
     {
         Vector2 currentVelocity = seeker.linearVelocity;
